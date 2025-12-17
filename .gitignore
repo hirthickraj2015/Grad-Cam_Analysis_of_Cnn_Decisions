@@ -1,0 +1,97 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+.virtualenv/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Project specific
+medical_images/*.jpg
+medical_images/*.png
+medical_images/*.jpeg
+!medical_images/README.txt
+
+# Results (keep structure, ignore outputs)
+results/*.png
+results/*.jpg
+results/*.csv
+results/*.json
+results/*.txt
+!results/.gitkeep
+
+# Model weights (if any)
+*.pth
+*.pt
+*.ckpt
+*.weights
+
+# Data
+data/
+datasets/
+*.h5
+*.hdf5
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# OS
+Thumbs.db
+.Trash-*
+
+# Large PDFs (keep small ones)
+# Uncomment if you want to ignore the research paper
+# *.pdf
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
