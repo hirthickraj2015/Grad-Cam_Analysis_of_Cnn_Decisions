@@ -1,26 +1,20 @@
 #!/usr/bin/env python3
-"""
-Download Real Medical Images for Testing
-=========================================
-Downloads sample chest X-ray images from a public dataset.
-"""
+# Script to download test images from wikimedia commons
 
 import urllib.request
 import ssl
 from pathlib import Path
 import sys
 
-# Sample chest X-ray URLs from NIH dataset (publicly available)
+# chest X-ray URLs (public domain)
 SAMPLE_IMAGES = [
-    # These are public domain chest X-rays
     "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Chest_radiograph_in_influenza_and_Haemophilus_influenzae%2C_posteroanterior%2C_annotated.jpg/800px-Chest_radiograph_in_influenza_and_Haemophilus_influenzae%2C_posteroanterior%2C_annotated.jpg",
     "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Chest_X-ray_in_influenza_A_H1N1.png/800px-Chest_X-ray_in_influenza_A_H1N1.png",
     "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Aortic_rupture_chest_x-ray.jpg/800px-Aortic_rupture_chest_x-ray.jpg",
 ]
 
-# Alternative: Download ImageNet sample images (diverse, well-structured)
+# ImageNet sample images for testing
 IMAGENET_SAMPLES = [
-    # Various ImageNet categories - diverse real images
     "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/800px-Cat03.jpg",
     "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/800px-Cat_November_2010-1a.jpg",
     "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/YellowLabradorLooking_new.jpg/800px-YellowLabradorLooking_new.jpg",
@@ -44,18 +38,16 @@ IMAGENET_SAMPLES = [
 ]
 
 def download_images(use_imagenet=True):
-    """Download sample images for testing."""
-    output_dir = Path('medical_images')
+    output_dir = Path('input_images')
     output_dir.mkdir(exist_ok=True)
 
-    # Use ImageNet images by default (better for ResNet testing)
     urls = IMAGENET_SAMPLES if use_imagenet else SAMPLE_IMAGES
     prefix = "real" if use_imagenet else "xray"
 
     print(f"Downloading {len(urls)} {'ImageNet' if use_imagenet else 'medical'} images...")
     print(f"Output directory: {output_dir.absolute()}\n")
 
-    # Disable SSL verification for downloads (some certificates may be old)
+    # disable SSL verification
     ssl._create_default_https_context = ssl._create_unverified_context
 
     downloaded = 0
@@ -73,13 +65,11 @@ def download_images(use_imagenet=True):
             print(f"✗ Error: {e}")
             continue
 
-    print(f"\n{'='*70}")
-    print(f"Downloaded {downloaded}/{len(urls)} images successfully")
+    print(f"\nDownloaded {downloaded}/{len(urls)} images")
     print(f"Location: {output_dir.absolute()}")
-    print('='*70)
 
     if downloaded == 0:
-        print("\n⚠ No images downloaded. Check your internet connection.")
+        print("\nNo images downloaded. Check internet connection.")
         return False
 
     return True
@@ -90,8 +80,11 @@ if __name__ == "__main__":
 
     if success:
         print("\nNext steps:")
-        print("  1. Run: jupyter notebook 3_run_batch_experiments.ipynb")
-        print("  2. Or run: jupyter notebook 4_complete_pipeline.ipynb")
-        print("\nThese real images will produce meaningful, diverse results!")
+        print("  Run the notebooks in order:")
+        print("  - 1_create_dataset.ipynb")
+        print("  - 2_gradcam.ipynb")
+        print("  - 3_layercam.ipynb")
+        print("  - 4_hybrid_gradcam_layercam.ipynb")
+        print("  - 5_evaluation_comparison.ipynb")
     else:
         sys.exit(1)

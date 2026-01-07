@@ -1,0 +1,13 @@
+metric,comparison,t_statistic,p_value,cohens_d,significant
+deletion_auc,Adaptive vs fixed_25,,,0.0,False
+deletion_auc,Adaptive vs fixed_50,-1.0000000000000002,0.3298768009211248,-2.589051986005854e-07,False
+deletion_auc,Adaptive vs fixed_100,,,0.0,False
+insertion_auc,Adaptive vs fixed_25,,,0.0,False
+insertion_auc,Adaptive vs fixed_50,-1.0,0.32987680092112504,-0.0002550689484816467,False
+insertion_auc,Adaptive vs fixed_100,,,0.0,False
+avg_drop,Adaptive vs fixed_25,,,0.0,False
+avg_drop,Adaptive vs fixed_50,,,0.0,False
+avg_drop,Adaptive vs fixed_100,,,0.0,False
+time,Adaptive vs fixed_25,12.571422098641579,1.1762892427660326e-10,3.963032370817568,True
+time,Adaptive vs fixed_50,7.620097941994523,3.4256699085641227e-07,2.3837074281699677,True
+time,Adaptive vs fixed_100,-1.8878069125127686,0.0744218263884615,-0.604770757997603,False
